@@ -18,10 +18,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class ManagePersonalImplTest {
 
     private ManagePersonalImpl managePersonal;
+    private MongoClient client;
+    private MongoDatabase supermongo;
 
     @BeforeEach
     void setUp() {
-        managePersonal = new ManagePersonalImpl();
+        client = new MongoClient("localhost", 27017);
+        supermongo = client.getDatabase("SmartHooverLTD");
+        managePersonal = new ManagePersonalImpl(supermongo);
     }
 
     @AfterEach

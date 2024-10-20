@@ -11,25 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManagePersonalImpl implements ManagePersonal {
-    private MongoClient client;
-    private MongoDatabase supermongo;
+
     private MongoCollection<Document> salesmencollection;
     private MongoCollection<Document> socialperformancecollection;
 
-    public ManagePersonalImpl() {
-        client = new MongoClient("localhost", 27017);
-
-        // Get database 'SmartHooverLTD' (creates one if not available)
-        supermongo = client.getDatabase("SmartHooverLTD");
-
-        // Get Collection 'salesmen' (creates one if not available)
+    public ManagePersonalImpl(MongoDatabase supermongo) {
         salesmencollection = supermongo.getCollection("SalesManCollection");
         socialperformancecollection = supermongo.getCollection("SocialPerformanceCollection");
     }
-
     @Override
     public void createSalesMan(SalesMan salesMan) {
-        Document document = new Document();
+        org.bson.Document document = new Document();
         document.append("firstname" , salesMan.getFirstname());
         document.append("lastname" , salesMan.getLastname());
         document.append("sid" , salesMan.getId());

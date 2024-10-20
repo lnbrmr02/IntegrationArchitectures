@@ -20,7 +20,9 @@ public interface ManagePersonal {
 
      public List<SocialPerformanceRecord> readSocialPerformanceRecord( SalesMan salesMan );
     // Remark: How do you integrate the year?
-     void deleteSalesMan(int sid); // Method to delete a salesman
-    public void deleteSocialPerformanceRecord(SocialPerformanceRecord record, SalesMan salesMan); // Method to delete a performance record
-    public void deleteAll();
+     public void deleteSalesMan(int sid); // Method to delete a salesman
+
+     public void deleteSocialPerformanceRecord(SocialPerformanceRecord record, SalesMan salesMan); // Method to delete a performance record
+
+     public void deleteAll();
 }
